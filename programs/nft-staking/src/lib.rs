@@ -1,3 +1,6 @@
+#![allow(unexpected_cfgs)]
+#![allow(deprecated)]
+
 pub mod constants;
 pub mod error;
 pub mod instructions;
@@ -25,5 +28,9 @@ pub mod nft_staking {
 
     pub fn stake(ctx: Context<Stake>) -> Result<()> {
         ctx.accounts.stake(&ctx.bumps)
+    }
+
+    pub fn unstake(ctx: Context<Unstake>) -> Result<()> {
+        ctx.accounts.unstake()
     }
 }

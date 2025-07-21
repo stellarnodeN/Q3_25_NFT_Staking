@@ -10,7 +10,10 @@ describe("nft-staking", () => {
 
   it("Is initialized!", async () => {
     // Add your test here.
-    const tx = await program.methods.initialize().rpc();
+    const provider = anchor.getProvider();
+    const tx = await program.methods.initializeConfig(10, 5, 86400).accounts({
+      admin: provider.publicKey,
+    }).rpc();
     console.log("Your transaction signature", tx);
   });
 });
